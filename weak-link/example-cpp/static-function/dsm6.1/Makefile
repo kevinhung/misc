@@ -7,6 +7,7 @@ MAJOR = 6
 MINOR = 1
 
 CFLAGS += -DMAJOR=$(MAJOR) -DMINOR=$(MINOR)
+CFLAGS += -DBUILD_LIB$(shell echo $(LIBNAME) | tr '[:lower:]' '[:upper:]')
 CFLAGS += -fPIC -DPIC
 CFLAGS += -Werror -Wall -Wextra -Wno-unused-parameter
 CXXFLAGS += $(CFLAGS)
