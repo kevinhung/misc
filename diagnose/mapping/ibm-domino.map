@@ -1,0 +1,30 @@
+{
+    "name": "IBM Lotus Domino",
+    "requires": [
+        "dominoPerson",
+        "dominoGroup",
+        "sambaDomain",
+        "sambaSamAccount"
+    ],
+    "filters": {
+        "passwd":  "(objectClass=dominoPerson)",
+        "shadow":  "(objectClass=dominoPerson)",
+        "group":  "(objectClass=dominoGroup)"
+    },
+    "backends": {
+        "passwd":  {
+            "uid":  "cn",
+            "uidNumber":  "dominounid",
+            "gidNumber":  "dominounid"
+        },
+        "shadow":  {
+            "uid":  "cn"
+        },
+        "group":  {
+            "cn":  "cn",
+            "gidNumber":  "dominounid",
+            "memberUid": "memberUid",
+            "member": "member"
+        }
+    }
+}

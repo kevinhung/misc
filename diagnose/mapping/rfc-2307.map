@@ -1,0 +1,31 @@
+{
+    "name": "RFC 2307",
+    "requires": [
+        "posixAccount",
+        "shadowAccount",
+        "posixGroup",
+        "sambaDomain",
+        "sambaSamAccount"
+    ],
+    "filters": {
+        "passwd": "(objectClass=posixAccount)",
+        "shadow": "(objectClass=shadowAccount)",
+        "group": "(objectClass=posixGroup)"
+    },
+    "backends": {
+        "passwd": {
+            "uid": "uid",
+            "uidNumber": "uidNumber",
+            "gidNumber": "gidNumber"
+        },
+        "shadow": {
+            "uid": "uid"
+        },
+        "group": {
+            "cn": "cn",
+            "gidNumber": "gidNumber",
+            "memberUid": "memberUid",
+            "member": "member"
+        }
+    }
+}
