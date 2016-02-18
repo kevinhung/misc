@@ -1,5 +1,5 @@
 /**
- * Use of weak link for C/C++ free function.
+ * Use of weak link for C++ non-static member function.
  */
 
 #include <cstdio>
@@ -16,9 +16,10 @@ static void bar_alternative(int value)
 int main(int argc, char **argv)
 {
 	int value = 5;
+	FooBar obj;
 
 #ifdef HAVE_FOO
-	foo(value);
+	obj.foo(value);
 #endif
 
 	/**
@@ -27,8 +28,8 @@ int main(int argc, char **argv)
 	 * of -Wl,--as-needed. As the result, always enter else-part...
 	 * See ./Makefile for the solution.
 	 */
-	if (bar) {  // Both "&bar" and "bar" work.
-		bar(value);
+	if (&FooBar::bar) {  // "&" is required or build fail.
+		obj.bar(value);
 	} else {
 		bar_alternative(value);
 	}

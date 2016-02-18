@@ -1,3 +1,7 @@
+/**
+ * Use of weak link for C++ static member function.
+ */
+
 #include <cstdio>
 #include <cstdlib>
 #include "../foobar.h"
@@ -23,7 +27,7 @@ int main(int argc, char **argv)
 	 * of -Wl,--as-needed. As the result, always enter else-part...
 	 * See ./Makefile for the solution.
 	 */
-	if (FooBar::bar) {
+	if (&FooBar::bar) {  // Both "&FooBar::bar" and "FooBar::bar" work.
 		FooBar::bar(value);
 	} else {
 		bar_alternative(value);
